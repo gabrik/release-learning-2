@@ -1,0 +1,66 @@
+name: release-please
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  checks:
+      name: Checks
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+
+        - name: Install depdendencies
+          run: |
+            sudo apt update
+            sudo apt install -y protobuf-compiler
+        
+        - name: Install Rust toolchain
+          run: |
+              rustup show
+              rustup component add rustfmt clippy
+
+        - name: Code format check
+          uses: actions-rs/cargo@v1
+          with:
+            command: fmt
+            args: -- --check
+
+        - name: Unit tests
+          uses: actions-rs/cargo@v1
+          with:
+            command: test
+            args: --all
+
+        - name: Clippy
+          uses: actions-rs/cargo@v1
+          with:
+            command: clippy
+            args: --all-targets -- -D warnings
+
+        - name: Clippy unstable
+          uses: actions-rs/cargo@v1
+          with:
+            command: clippy
+            args: --all-targets -- -D warnings
+
+        - name: Clean up
+          uses: actions-rs/cargo@v1
+          with:
+            command: clean
+
+  release-please:
+    name: release
+    needs: [checks]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        with:
+          command: manifest-pr
+          config-file: release-please-config.json
+          # token: ${{secrets.PAT_TOKEN}}

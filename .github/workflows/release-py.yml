@@ -1,0 +1,41 @@
+name: release-py
+on:
+  release:
+    types: [published]
+
+jobs:
+    publish:
+        
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+
+            - name: Get release
+              id: get_release
+              uses: bruceadams/get-release@v1.3.2
+              env:
+                GITHUB_TOKEN: ${{ github.token }}
+            - name: Get version
+              id: get_version
+              run: echo  ${{ steps.get_release.outputs.upload_url }} | sed -nre 's/^[^0-9]*(([0-9]+\.)*[0-9]+).*/\1/p'  >> "$GITHUB_OUTPUT"
+            - uses: actions/setup-python@v4
+              with:
+                python-version: '3.10' 
+            - name: install dependency
+              run: pip3 install build wheel setuptools -y
+            - name: build
+              run: |
+                cd clients/python
+                python3 -m build --wheel
+              
+
+            - name: upload windows artifact
+              uses: actions/upload-release-asset@v1
+              env:
+                GITHUB_TOKEN: ${{ github.token }}
+              with:
+                upload_url: ${{ steps.get_release.outputs.upload_url }}
+                asset_path: clients/python/dist/release_learning-${{ steps.get_version.outputs.output1 }}-py3-none-any.whl
+                asset_name: release_learning--${{ steps.get_version.outputs.output1 }}-py3-none-any.whl
+                asset_content_type: application/zip
