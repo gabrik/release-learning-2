@@ -1,21 +1,19 @@
 {
-    "packages": {
-        ".": {
-            "release-type": "rust",
-            "default-branch": "main",
-            "extra-files": [
-                {
-                    "type":"json",
-                    "path":"clients/nodejs/package.json",
-                    "jsonpath": "$.version"
-                },
-                {
-                    "type":"toml",
-                    "path":"clients/python/pyproject.toml",
-                    "jsonpath": "$.project.version"
-                }
-            ]
+    "release-type": "rust",
+    "extra-files": [
+        {
+            "type":"json",
+            "path":"clients/nodejs/package.json",
+            "jsonpath": "$.version"
+        },
+        {
+            "type":"toml",
+            "path":"clients/python/pyproject.toml",
+            "jsonpath": "$.project.version"
         }
+    ],
+    "packages": {
+        ".": {}
     },
     "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
 }
