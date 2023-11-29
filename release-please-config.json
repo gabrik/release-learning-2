@@ -4,21 +4,16 @@
             "release-type": "rust",
             "default-branch": "main",
             "extra-files": [
-                "Cargo.toml"
-            ]
-        },
-        "clients/nodejs": {
-            "release-type": "node",
-            "default-branch": "main",
-            "extra-files": [
-                "clients/nodejs/package.json"
-            ]
-        },
-        "clients/python": {
-            "release-type": "python",
-            "default-branch": "main",
-            "extra-files": [
-                "clients/python/pyproject.toml"
+                {
+                    "type":"json",
+                    "path":"clients/nodejs/package.json",
+                    "jsonpath": "$.version"
+                },
+                {
+                    "type":"toml",
+                    "path":"clients/python/pyproject.toml",
+                    "jsonpath": "$.project.version"
+                }
             ]
         }
     },
