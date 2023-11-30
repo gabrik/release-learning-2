@@ -105,9 +105,14 @@ jobs:
         with:
           node-version: 20
       - name: build
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
         run: |
             cd clients/nodejs
             yarn install
+            yarn build
+            yarn pack
+            yarn publish
 
   publish-py:
     runs-on: ubuntu-latest
