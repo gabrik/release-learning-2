@@ -1,6 +1,6 @@
 [project]
 name = "release-learning-python"
-version = "0.2.12"
+version = "0.2.13"
 authors = [
   { name="Example Author", email="author@example.com" },
 ]
