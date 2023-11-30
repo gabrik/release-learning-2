@@ -1,5 +1,5 @@
 {
-  "name": "nodejs",
+  "name": "@gabrik/release-learing-2",
   "packageManager": "yarn@4.0.2",
   "version":"0.2.3",
   "scripts": {
@@ -11,5 +11,9 @@
   ],
   "devDependencies": {
     "typescript": "^5.3.2"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
   }
 }
