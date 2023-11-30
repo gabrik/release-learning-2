@@ -1,6 +1,7 @@
 {
   "name": "nodejs",
   "packageManager": "yarn@4.0.2",
+  "version":"0.2.3",
   "scripts": {
     "build": "tsc",
     "publish": "yarn npm publish"
