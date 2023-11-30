@@ -1,0 +1,32 @@
+name: publish-npm
+on:
+  workflow_dispatch:
+
+jobs:
+ publish-js:
+    runs-on: ubuntu-latest
+    steps:
+      # The logic below handles the npm publication:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: git config
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com/
+
+      - name: build
+        env:
+          # GITHUB_TOKEN: ${{ secrets.PAT }}
+          # NODE_AUTH_TOKEN: ${{ secrets.PAT }}
+          YARN_NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        working-directory: ./clients/nodejs
+        run: |
+            yarn install
+            yarn build
+            yarn pack
+            yarn publish
