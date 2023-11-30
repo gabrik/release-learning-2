@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.20](https://github.com/gabrik/release-learning-2/compare/release-test-v0.2.19...release-test-v0.2.20) (2023-11-30)
+
+
+### Bug Fixes
+
+* 21 ([0b4ecc8](https://github.com/gabrik/release-learning-2/commit/0b4ecc87d9d698dcb95a06fe802b96cca3a32b8d))
+
 ## [0.2.19](https://github.com/gabrik/release-learning-2/compare/release-test-v0.2.18...release-test-v0.2.19) (2023-11-30)
 
 
