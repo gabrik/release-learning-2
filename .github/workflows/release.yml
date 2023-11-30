@@ -68,6 +68,7 @@ jobs:
       - run: | 
           echo "is release? ${{steps.release.outputs.release_created}}"
           echo "next version is ${{ steps.release.outputs.release_major }}.${{ steps.release.outputs.release_minor }}.${{ steps.release.outputs.release_patch }}"
+          echo "tag is ${{ steps.release.outputs.tag_name }}
 
     outputs:
         release_created:  ${{ steps.release.outputs.release_created }}
@@ -88,6 +89,7 @@ jobs:
         run: | 
           echo "is release? ${{needs.release-please.outputs.release_created}}"
           echo "next version is $MAJOR $MINOR $PATCH"
+          echo "tag is ${{ needs.release-please.outputs.tag_name }}
 
 
   publish-js:
@@ -105,6 +107,7 @@ jobs:
       - name: build
         run: |
             cd clients/nodejs
+            yarn install
             yarn run release
 
   publish-py:
