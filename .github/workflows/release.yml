@@ -86,13 +86,21 @@ jobs:
       # The logic below handles the npm publication:
       - name: Checkout Repository
         uses: actions/checkout@v4
+      - name: git config
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: "npm"
+          registry-url: https://npm.pkg.github.com/
+
       - name: build
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
+          NODE_AUTH_TOKEN: ${{secrets.PAT}}
         working-directory: ./clients/nodejs
         run: |
             yarn install
