@@ -108,7 +108,6 @@ jobs:
         run: |
             cd clients/nodejs
             yarn install
-            yarn run release
 
   publish-py:
     runs-on: ubuntu-latest
@@ -117,13 +116,9 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-      - name: Setup env var
-        run: |
-          VERSION=$(cat << EOF
-          '${{ needs.release-please.outputs.major }}'.'${{ needs.release-please.outputs.minor }}'.'${{ needs.release-please.outputs.patch }}''
-          EOF
-          )
-          echo VERSION=$VERSION >> $GITHUB_ENV
+      - name: Get version
+        id: get_version
+        run: echo  ${{ needs.release-please.outputs.tag_name }} | sed -nre 's/^[^0-9]*(([0-9]+\.)*[0-9]+).*/\1/p'  >> "$GITHUB_OUTPUT"
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10' 
@@ -140,6 +135,6 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           upload_url: ${{ needs.release-please.outputs.upload_url }}
-          asset_path: clients/python/dist/release_learning-${{ env.VERSION }}-py3-none-any.whl
-          asset_name: release_learning--${{ env.VERSION }}-py3-none-any.whl
+          asset_path: clients/python/dist/release_learning-${{ steps.get_version.outputs.output1 }}-py3-none-any.whl
+          asset_name: release_learning-${{ steps.get_version.outputs.output1 }}-py3-none-any.whl
           asset_content_type: application/zip
