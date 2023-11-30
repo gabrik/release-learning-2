@@ -95,7 +95,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT }}
         working-directory: ./clients/nodejs
         run: |
-            corepack enable
             yarn install
             yarn build
             yarn pack
