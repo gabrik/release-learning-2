@@ -95,6 +95,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT }}
         run: |
             cd clients/nodejs
+            npm i -g yarn
             yarn install
             yarn build
             yarn pack
