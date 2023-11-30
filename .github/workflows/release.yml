@@ -99,13 +99,14 @@ jobs:
       - name: build
         env:
           # GITHUB_TOKEN: ${{ secrets.PAT }}
-          NODE_AUTH_TOKEN: ${{ github.token }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         working-directory: ./clients/nodejs
         run: |
             yarn install
             yarn build
             yarn pack
-            yarn npm publish
+            yarn npm login --publish 
+            yarn npm publish --verbose
 
   publish-py:
     runs-on: ubuntu-latest
