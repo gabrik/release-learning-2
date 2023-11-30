@@ -106,7 +106,7 @@ jobs:
             yarn build
             yarn pack
             yarn npm login --publish 
-            yarn npm publish --verbose
+            yarn npm publish
 
   publish-py:
     runs-on: ubuntu-latest
