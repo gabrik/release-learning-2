@@ -1,7 +1,7 @@
 {
   "name": "@gabrik/release-learing-2",
   "packageManager": "yarn@4.0.2",
-  "version": "0.2.19",
+  "version": "0.2.20",
   "scripts": {
     "build": "tsc",
     "publish": "yarn npm publish"
