@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.8](https://github.com/gabrik/release-learning-2/compare/release-test-v0.2.7...release-test-v0.2.8) (2023-11-30)
+
+
+### Bug Fixes
+
+* yarn.lock ([9b75b4c](https://github.com/gabrik/release-learning-2/commit/9b75b4c06473598a02425de9b9e5a99541679687))
+
 ## [0.2.7](https://github.com/gabrik/release-learning-2/compare/release-test-v0.2.6...release-test-v0.2.7) (2023-11-30)
 
 
