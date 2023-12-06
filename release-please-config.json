@@ -1,31 +1,25 @@
-{
-    "plugins": ["cargo-workspace"],
+{   
     "packages": {
         ".": {
-            "release-type": "rust"
+            "release-type": "simple",
+            "extra-files": [
+                {
+                    "type":"toml",
+                    "path":"Cargo.toml",
+                    "jsonpath": "$.workspace.package.version"
+                }
+            ]
         },
-        "release-test": {
-            "release-type": "rust",
-            "skip-github-release": true
-        },
-        "a-crate": {
-            "release-type": "rust",
-            "skip-github-release": true
-        },
-        "b-crate": {
-            "release-type": "rust",
-            "skip-github-release": true
-        },
-        "clients/nodejs": {
+        "clients/nodejs":{
             "release-type": "node",
             "skip-github-release": true
         },
-        "clients/python": {
+        "clients/python":{
             "release-type": "python",
             "skip-github-release": true
         }
+
     },
-    "pull-request-title-pattern": "chore${scope}: release${component} ${version}",
     "release-label": "Release Learning",
-    "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
+    "$schema": "https://raw.githubusercontent.com/googleapis/release-please/v16.4.0/schemas/config.json"
 }

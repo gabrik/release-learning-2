@@ -62,7 +62,6 @@ jobs:
       - uses: google-github-actions/release-please-action@v4
         id: release
         with:
-          command: manifest
           config-file: release-please-config.json
           changelog-types: >
             [
