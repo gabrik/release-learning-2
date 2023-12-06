@@ -1,20 +1,31 @@
 {
-    "release-type": "rust",
     "plugins": ["cargo-workspace"],
-    "bootstrap-sha": "a6e3ed34fbfb2cf140f92ab23bf480a2e2f92040",
     "packages": {
-        ".": {},
-        "release-test":{},
-        "a-crate":{},
-        "b-crate":{},
-        "clients/nodejs":{
-            "release-type": "node"
+        ".": {
+            "release-type": "rust"
         },
-        "clients/python":{
-            "release-type": "python"
+        "release-test": {
+            "release-type": "rust",
+            "skip-github-release": true
+        },
+        "a-crate": {
+            "release-type": "rust",
+            "skip-github-release": true
+        },
+        "b-crate": {
+            "release-type": "rust",
+            "skip-github-release": true
+        },
+        "clients/nodejs": {
+            "release-type": "node",
+            "skip-github-release": true
+        },
+        "clients/python": {
+            "release-type": "python",
+            "skip-github-release": true
         }
     },
-    "pull-request-title-pattern":"chore${scope}: release${component} ${version}",
+    "pull-request-title-pattern": "chore${scope}: release${component} ${version}",
     "release-label": "Release Learning",
     "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
 }
