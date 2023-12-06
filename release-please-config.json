@@ -1,19 +1,18 @@
 {
     "release-type": "rust",
-    "extra-files": [
-        {
-            "type":"json",
-            "path":"clients/nodejs/package.json",
-            "jsonpath": "$.version"
-        },
-        {
-            "type":"toml",
-            "path":"clients/python/pyproject.toml",
-            "jsonpath": "$.project.version"
-        }
-    ],
+    "plugins": ["cargo-workspace"],
+    "bootstrap-sha": "a6e3ed34fbfb2cf140f92ab23bf480a2e2f92040",
     "packages": {
-        ".": {}
+        ".": {},
+        "release-test":{},
+        "a-crate":{},
+        "b-crate":{},
+        "clients/nodejs":{
+            "release-type": "node"
+        },
+        "clients/python":{
+            "release-type": "python"
+        }
     },
     "pull-request-title-pattern":"chore${scope}: release${component} ${version}",
     "release-label": "Release Learning",

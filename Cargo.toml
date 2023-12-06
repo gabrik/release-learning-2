@@ -1,8 +1,50 @@
-[package]
-name = "release-test"
-version = "0.2.23"
+##
+## Copyright (c) 2023 ZettaScale Technology
+##
+## Contributors:
+##   ZettaScale PaaS Team, <PaaS@zettascale.tech>
+##
+
+
+[workspace]
+members = [
+  "release-test",
+  "a-crate",
+  "b-crate",
+]
+resolver = "2"
+
+[workspace.package]
+authors = ["gabrik"]
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[workspace.dependencies]
+env_logger = "0.10.0"
+sea-orm = { version = "^0.12.0" , features = [ "sqlx-postgres", "runtime-tokio-rustls", "macros" ] }
+tokio = { version = "1.28.2", features = ["full"] }
+tonic = { version = "0.10.0", features = ["tls-webpki-roots"]}
+tonic-health = "0.10.0"
+prost = "0.12.0"
+sea-orm-migration = "^0.12.0"
+async-trait = "0.1.68"
+serde = { version = "1.0.55", features = ["derive", "rc"] }
+url = {version = "2.4.0", features = ["serde"]}
+uuid = { version = "1", features = ["v4"] }
+serde_json = "1.0.60"
+tracing = "0.1"
+tracing-subscriber = {version = "0.3", features = ["json", "env-filter"]}
+tracing-loki = "0.2.4"
+futures = "0.3.28"
+reqwest = { version = "0.11", features = ["json", "rustls-tls-webpki-roots"], default-features = false }
 
-[dependencies]
+[profile.dev]
+debug=true
+opt-level = 0
+
+
+[profile.release]
+debug=false
+lto="fat"
+codegen-units=1
+opt-level=3
+panic="abort"
