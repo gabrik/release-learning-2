@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/gabrik/release-learning-2/compare/v0.3.0...v0.3.1) (2023-12-06)
+
+
+### Miscellaneous Chores
+
+* relase 0.3.1 ([0ba2e6c](https://github.com/gabrik/release-learning-2/commit/0ba2e6c58a86b9788409171d67ef4bbd0f7297b0))
+
 ## [0.3.0](https://github.com/gabrik/release-learning-2/compare/v0.2.3...v0.3.0) (2023-12-06)
 
 
