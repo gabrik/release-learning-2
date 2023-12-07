@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.3.1](https://github.com/gabrik/release-learning-2/compare/v0.3.0...v0.3.1) (2023-12-07)
+
+
+### Bug Fixes
+
+* a new fix ([052e33d](https://github.com/gabrik/release-learning-2/commit/052e33dac6fce750de64e25f977291e28f3e827c))
+* **rust:** nasty bug ([e1dde1c](https://github.com/gabrik/release-learning-2/commit/e1dde1c5d9b8ba2ce0adffc8bd77fccc32374ba2))
+
+
+### Miscellaneous Chores
+
+* relase 0.3.1 ([0ba2e6c](https://github.com/gabrik/release-learning-2/commit/0ba2e6c58a86b9788409171d67ef4bbd0f7297b0))
+
 ## [0.2.23](https://github.com/gabrik/release-learning-2/compare/release-test-v0.2.22...release-test-v0.2.23) (2023-11-30)
 
 
